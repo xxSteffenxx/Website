@@ -5,10 +5,12 @@ pipeline{
     }
     stages{
         stage('SCM Checkout'){
-            git 'https://github.com/xxSteffenxx/Website'
+            steps{
+                git 'https://github.com/xxSteffenxx/Website'
+            }
         }
         stage('Compile-Package'){
-            withMaven {
+            steps{
                 sh 'mvn package'
             }
         }
