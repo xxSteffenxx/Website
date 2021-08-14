@@ -3,7 +3,9 @@ node{
     git 'https://github.com/xxSteffenxx/Website'
   }
   stage('Compile-Package'){
-   sh 'mvn package' 
+    withMaven {
+        sh 'mvn package'
+    }
   }
   
 }
