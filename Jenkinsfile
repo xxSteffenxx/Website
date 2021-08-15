@@ -8,6 +8,9 @@ pipeline{
     tools{
         maven 'M2_HOME'
     }
+    options {
+        skipStagesAfterUnstable()
+    }
     stages{
         stage('SCM Checkout'){
             steps{
@@ -17,6 +20,11 @@ pipeline{
         stage('Compile-Package'){
             steps{
                 sh 'mvn package'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }
