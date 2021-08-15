@@ -1,5 +1,3 @@
 FROM adoptopenjdk/openjdk11:latest
-ARG JAR_FILE
-COPY ${JAR_FILE} /app.jar
-RUN echo ${JAR_FILE}
-ENTRYPOINT  ["java", "-jar", "/app.jar"]
+COPY target/Test-1.0-SNAPSHOT.jar target/app.jar
+ENTRYPOINT  ["java", "-jar", "target/app.jar"]
