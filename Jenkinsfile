@@ -22,9 +22,14 @@ pipeline{
                 sh 'mvn package'
             }
         }
-        stage('Deliver') {
+        stage('Docker') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                sh """
+                  docker build -t Website .
+                """
+                sh """
+                  docker run -rm Website .
+                """
             }
         }
     }
