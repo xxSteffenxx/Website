@@ -22,12 +22,12 @@ pipeline{
                 sh 'mvn package'
             }
         }
-        stage('Initialize'){
+       /* stage('Initialize'){
             steps{
                 def dockerHome = tool 'MyDocker'
                 env.PATH = "${dockerHome}/bin:${env.PATH}"
             }
-        }
+        }*/
         stage('Docker') {
             steps {
                 sh """
